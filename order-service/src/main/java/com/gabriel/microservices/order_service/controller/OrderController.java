@@ -2,7 +2,7 @@ package com.gabriel.microservices.order_service.controller;
 
 import java.util.List;
 
-import org.springframework.http.HttpStatus;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,7 +13,7 @@ import com.gabriel.microservices.order_service.service.OrderService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/api/orders")
+@RequestMapping("/api/order")
 @RequiredArgsConstructor
 public class OrderController {
 
@@ -25,8 +25,8 @@ public class OrderController {
     }
     
     @PostMapping
-    public ResponseEntity<Void> placeOrder(@RequestBody OrderRequest orderRequest) {
+    public String placeOrder(@RequestBody OrderRequest orderRequest) {
         orderService.placeOrder(orderRequest);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+        return "Order Placed Successfully";
     }
 }
